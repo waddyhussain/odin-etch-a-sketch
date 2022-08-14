@@ -11,5 +11,19 @@ function createGrid(parent, size) {
     }
 }
 
+function removeGrid() {
+    document.querySelector(".container").replaceChildren();
+}
+
 const container = document.querySelector(".container");
 createGrid(container, 16);
+
+document.querySelector("button#change-size").addEventListener("click", () => {
+    const newSize = parseInt(prompt("Enter a new size for the grid (Max size: 100)"));
+    if (newSize <= 100 && newSize >= 1) {
+        removeGrid();
+        createGrid(container, newSize);
+    } else {
+        alert("Invalid size given");
+    }
+});
