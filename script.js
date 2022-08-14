@@ -7,7 +7,7 @@ function createGrid(parent, size) {
             if (parent.classList.contains("show-border")) {
                 div.classList.add("show-border");
             }
-            
+
             div.addEventListener("mouseenter", e => e.target.classList.add("colored"));
             row.appendChild(div);
         }
@@ -19,15 +19,7 @@ function removeGrid() {
     document.querySelector(".container").replaceChildren();
 }
 
-function toggleGridlines() {
-    document.querySelector(".container").classList.toggle("show-border");
-    document.querySelectorAll(".row div").forEach(div => div.classList.toggle("show-border"));
-}
-
-const container = document.querySelector(".container");
-createGrid(container, 16);
-
-document.querySelector("button#change-size").addEventListener("click", () => {
+function userChangeGridSize() {
     const newSize = parseInt(prompt("Enter a new size for the grid (Max size: 100)"));
     if (newSize <= 100 && newSize >= 1) {
         removeGrid();
@@ -35,6 +27,20 @@ document.querySelector("button#change-size").addEventListener("click", () => {
     } else {
         alert("Invalid size given");
     }
-});
+}
 
+function toggleGridlines() {
+    document.querySelector(".container").classList.toggle("show-border");
+    document.querySelectorAll(".row div").forEach(div => div.classList.toggle("show-border"));
+}
+
+function clearGrid() {
+    document.querySelectorAll(".row div").forEach(div => div.classList.remove("colored"));
+}
+
+const container = document.querySelector(".container");
+createGrid(container, 16);
+
+document.querySelector("button#change-size").addEventListener("click", userChangeGridSize);
 document.querySelector("button#toggle-gridlines").addEventListener("click", toggleGridlines);
+document.querySelector("button#clear-grid").addEventListener("click", clearGrid);
