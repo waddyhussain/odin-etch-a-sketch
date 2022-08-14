@@ -1,0 +1,21 @@
+.container {
+    border: 1px solid black;
+    width: 960px;
+    height: 960px;
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex: 1;
+}
+
+.row div {
+    border: 1px solid black;
+    flex: 1;
+}
+
+.colored {
+    background-color: aqua;
+}
